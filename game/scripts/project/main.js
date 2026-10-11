@@ -51,6 +51,9 @@ runOnStartup(async runtime => {
     let jumpWasDown = false;
     let lastLayout = "";
     let lastAnim = "";
+    let supportPlatform = null;
+    const platformPositions = new Map();
+    const MOVING_PLATFORM_NAMES = ["Level2Platform", "MovingPlatformUp", "Movingblockup"];
 
     function isGameLayout(runtime) {
         const n = runtime.layout?.name || "";
@@ -74,6 +77,30 @@ runOnStartup(async runtime => {
             for (const inst of cls.instances()) list.push(inst);
         }
         return list;
+    }
+
+    function getMovingPlatforms(runtime) {
+        const platforms = [];
+        for (const name of MOVING_PLATFORM_NAMES) {
+            const cls = runtime.objects[name];
+            if (cls) for (const inst of cls.instances()) platforms.push(inst);
+        }
+        return platforms;
+    }
+
+    // Check the feet against the top face, rather than using a generic overlap:
+    // that would also attach the player to the sides or underside of a platform.
+    function standsOn(player, platform, platformDx = 0, platformDy = 0) {
+        const feet = player.getBoundingBox();
+        const surface = platform.getBoundingBox();
+        const top = surface.top - platformDy;
+        return feet.bottom >= top - 3 && feet.bottom <= top + 1 &&
+            feet.right > surface.left - platformDx + 2 &&
+            feet.left < surface.right - platformDx - 2;
+    }
+
+    function findMovingSupport(player, platforms) {
+        return platforms.find(platform => standsOn(player, platform)) || null;
     }
 
     function overlapsAny(player, solids) {
@@ -135,6 +162,8 @@ runOnStartup(async runtime => {
         jumpWasDown = false;
         lastAnim = "";
         lastLayout = runtime.layout.name;
+        supportPlatform = null;
+        platformPositions.clear();
     });
 
     runtime.addEventListener("tick", () => {
@@ -144,11 +173,28 @@ runOnStartup(async runtime => {
         if (!player) return;
         const visual = getVisual(runtime);
         const solids = getSolids(runtime);
+        const movingPlatforms = runtime.layout.name === "Level1" ? [] : getMovingPlatforms(runtime);
         const dt = Math.min(runtime.dt, 1 / 30);
 
         if (runtime.layout.name !== lastLayout) {
             vx = 0; vy = 0; grounded = false; jumpWasDown = false; lastAnim = "";
+            supportPlatform = null;
+            platformPositions.clear();
             lastLayout = runtime.layout.name;
+        }
+
+        // Construct ticks Sine before this callback. Compare its current position
+        // with the previous tick so both horizontal and vertical Sine motion carry.
+        const platformDeltas = new Map();
+        for (const platform of movingPlatforms) {
+            const previous = platformPositions.get(platform);
+            const dx = previous ? platform.x - previous.x : 0;
+            const dy = previous ? platform.y - previous.y : 0;
+            platformDeltas.set(platform, {dx, dy});
+            platformPositions.set(platform, {x: platform.x, y: platform.y});
+        }
+        for (const platform of platformPositions.keys()) {
+            if (!platformDeltas.has(platform)) platformPositions.delete(platform);
         }
 
         const left = runtime.keyboard.isKeyDown("ArrowLeft") || runtime.keyboard.isKeyDown("KeyA");
@@ -163,12 +209,27 @@ runOnStartup(async runtime => {
         if (target !== 0) vx = approach(vx, target, ACCEL * dt);
         else vx = approach(vx, 0, DECEL * dt);
 
-        grounded = checkGrounded(player, solids);
+        const priorDelta = platformDeltas.get(supportPlatform);
+        const stillSupported = priorDelta &&
+            standsOn(player, supportPlatform, priorDelta.dx, priorDelta.dy);
+        if (!stillSupported) supportPlatform = null;
+        grounded = !!supportPlatform || checkGrounded(player, solids);
         if (jump && !jumpWasDown && grounded) {
             vy = -JUMP_SPEED;
             grounded = false;
+            supportPlatform = null;
         }
         jumpWasDown = jump;
+
+        if (supportPlatform) {
+            const {dx, dy} = platformDeltas.get(supportPlatform);
+            // Ignore the supporting platform while following it: on an upward
+            // tick it may already overlap the player's old position. Other
+            // solids still stop the carry, so walls and ceilings remain solid.
+            const otherSolids = solids.filter(solid => solid !== supportPlatform);
+            moveAxis(player, otherSolids, dx, "x");
+            moveAxis(player, otherSolids, dy, "y");
+        }
 
         vy = Math.min(vy + GRAVITY * dt, MAX_FALL);
 
@@ -180,9 +241,9 @@ runOnStartup(async runtime => {
         if (hitY) {
             if (fallingBefore) grounded = true;
             vy = 0;
-        } else {
-            grounded = checkGrounded(player, solids);
         }
+        supportPlatform = findMovingSupport(player, movingPlatforms);
+        grounded = checkGrounded(player, solids) || !!supportPlatform;
 
         // Keep the visible character synced even if event execution order changes.
         if (visual) {
