@@ -1,0 +1,39 @@
+/* Functional labels stay readable while decorative microtype retains its scale. */
+.desktop-nav a,.section-meta,.menu-index,.menu-bottom,
+.footer-top nav a,.footer-bottom a,.view-link,
+.gp-hero-index,.gp-hero-scroll,.gp-hero-info span,.gp-scene-label,
+.training-label,.training-hero-bottom a,.control-side-label,.corridor-label,
+.archive-top,.eyebrow,.hero-meta,.profile-facts span,.action-row small,
+.specimen-choices button span,.endings-intro button,.final-actions>a,
+.game-status,.game-placeholder p,.game-message button,.controls-reminder b,
+.utility-actions button,.utility-actions a,.play-footer,
+.play-footer a {font-size:12px}
+.gp-final-actions a,.training-final-bottom a{font-size:12px}
+
+.utility-actions button,.utility-actions a,.training-hero-bottom a,
+.hero-meta a,.view-link,.final-actions>a {min-height:44px;display:inline-flex;align-items:center}
+
+.game-instruction{margin:16px 0 0;max-width:520px;color:var(--white);font-size:14px;line-height:1.4}
+.game-instruction::before{content:'↗';color:var(--green);margin-right:10px}
+.touch-notice{display:none;margin:0 0 18px;padding:16px 18px;border-left:2px solid var(--cyan);background:rgba(103,232,249,.055);color:#d8e5ed;line-height:1.5;font-size:13px}
+.touch-notice strong{display:block;color:var(--cyan);font-size:12px;letter-spacing:.08em;margin-bottom:4px}
+.touch-notice span{display:block}
+@media(pointer:coarse), (hover:none){.touch-notice{display:block}}
+
+@media(max-width:700px){
+  .menu-index{top:96px}
+  .view-link{white-space:normal}
+}
+@media(max-width:600px){
+  .game-top{align-items:flex-start}
+  .game-top>div{min-width:0}
+  .game-status{max-width:125px;line-height:1.4;flex:none}
+  .controls-reminder{flex-wrap:wrap;row-gap:8px}
+  .controls-reminder b{margin-left:5px}
+  .utility-actions{flex-wrap:wrap}
+  .training-hero-bottom a,.hero-meta a{white-space:normal}
+}
+@media(max-width:390px){
+  .game-top{gap:10px}
+  .game-status{max-width:110px}
+}

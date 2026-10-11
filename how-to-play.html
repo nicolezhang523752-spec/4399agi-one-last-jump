@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Learn the controls and objective of 4399AGI: One Last Jump through an interactive training sequence.">
+  <title>How to Play — 4399AGI / One Last Jump</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="how-to-play.css">
+  <link rel="stylesheet" href="refinements.css">
+  <link rel="stylesheet" href="visual-tuning.css">
+  <script src="script.js" defer></script>
+  <script src="how-to-play.js" defer></script>
+</head>
+<body class="training-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header">
+    <a class="wordmark" href="index.html" aria-label="4399AGI home">4399<span>AGI</span><i aria-hidden="true"></i></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="gameplay.html">Gameplay</a>
+      <a class="active" href="#top" aria-current="page">How to Play</a>
+      <a href="characters.html">Characters</a>
+      <a class="nav-play" href="play.html">Play Now <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" inert>
+    <span class="menu-index">4399AGI / NAVIGATION</span>
+    <a href="index.html">Home</a>
+    <a href="gameplay.html">Gameplay</a>
+    <a href="#top" aria-current="page">How to Play</a>
+    <a href="characters.html">Characters</a>
+    <a class="mobile-play" href="play.html">Play Now <span aria-hidden="true">↗</span></a>
+    <span class="menu-bottom">ONE LAST JUMP © 2026</span>
+  </nav>
+
+  <main id="main">
+    <section class="training-hero" id="top" aria-labelledby="training-title">
+      <div class="training-hero-grid" aria-hidden="true"></div>
+      <span class="training-label">03 / TRAINING MODE</span>
+      <div class="training-hero-art" role="img" aria-label="4399AGI player moving toward a floating platform in the mountain game world"><div class="training-hero-sky"></div><img class="hero-art-platform" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="hero-art-player" src="source_assets/images/level1_player-walk-000.png" alt=""><span>PLAYER / ACTIVE</span></div>
+      <h1 id="training-title"><span>HOW TO</span><span>PLAY<span class="green-period">.</span></span></h1>
+      <div class="training-hero-bottom"><p>Learn the basics.<br>Then don’t stop moving.</p><a href="#training">ENTER TRAINING <span aria-hidden="true">↘</span></a><span>TRAINING / 00</span></div>
+      <div class="hero-draw-line" aria-hidden="true"></div>
+    </section>
+
+    <div class="training-flow" id="training">
+      <div class="motion-spine" aria-hidden="true"><div class="motion-spine-fill" id="motion-spine-fill"></div></div>
+
+      <section class="control-lab training-panel" id="controls" aria-labelledby="controls-title">
+        <div class="panel-top"><span class="section-meta">00 / READY</span><span>INPUT / KEYBOARD</span></div>
+        <div class="control-layout">
+          <div class="control-cluster" aria-label="Interactive arrow and space controls"><div class="arrow-cluster"><button class="control-key key-up" type="button" data-key="ArrowUp" aria-label="Up arrow key">↑</button><button class="control-key key-left" type="button" data-key="ArrowLeft" aria-label="Left arrow key">←</button><button class="control-key key-down" type="button" data-key="ArrowDown" aria-label="Down arrow key">↓</button><button class="control-key key-right" type="button" data-key="ArrowRight" aria-label="Right arrow key">→</button></div><button class="control-key key-space" type="button" data-key="Space" aria-label="Space key to jump">SPACE <span>JUMP ↗</span></button><span class="control-hint">TAP A KEY / OR USE YOUR KEYBOARD</span></div>
+          <div class="control-copy"><h2 id="controls-title">YOUR<br><em>MOVE.</em></h2><p>← → <strong>MOVE LEFT / RIGHT</strong><br>SPACE <strong>JUMP</strong></p><span class="control-side-label">DIRECTION / TIMING / MOMENTUM</span></div>
+        </div>
+        <div class="control-demo" id="control-demo" role="img" aria-label="Interactive 4399AGI player movement demonstration"><div class="control-demo-sky"></div><div class="demo-path"></div><img class="demo-platform" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="demo-player" src="source_assets/images/level1_player-idle-000.png" alt=""><span class="demo-readout" id="demo-readout">READY / SELECT A CONTROL</span></div>
+      </section>
+
+      <section class="move-step training-panel" id="move" aria-labelledby="move-title">
+        <div class="panel-top"><span class="section-meta">01 / MOVE</span><span>← &nbsp; →</span></div>
+        <div class="move-sticky"><div class="move-heading"><span class="step-number">01</span><h2 id="move-title">MOVE<span>.</span></h2><p>Use the arrow keys to keep moving.</p></div><div class="move-world" role="img" aria-label="Player moving across a floating platform"><div class="move-world-sky"></div><div class="move-direction" aria-hidden="true">→ → → → →</div><img class="move-platform" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="move-player" id="move-player" src="source_assets/images/level1_player-walk-000.png" alt=""><div class="move-trace"><span id="move-trace-fill"></span></div><span class="scene-caption">HOLD YOUR DIRECTION</span></div></div>
+      </section>
+
+      <section class="jump-step training-panel" id="jump" aria-labelledby="jump-title">
+        <div class="panel-top"><span class="section-meta">02 / JUMP</span><span>SPACE / LIFT</span></div>
+        <div class="jump-layout"><div class="jump-copy"><span class="step-number">02</span><h2 id="jump-title">JUMP<span>.</span></h2><p>Press SPACE to jump between platforms.</p><button class="jump-space control-key" type="button" data-key="Space" aria-label="Try Space to jump">SPACE <span>↗</span></button></div><div class="jump-diagram" role="img" aria-label="Player jumping upward between game platforms"><div class="jump-sky"></div><svg class="jump-arc" viewBox="0 0 600 640" preserveAspectRatio="none" aria-hidden="true"><path d="M90 490 C 180 490, 200 170, 340 215 S 440 360, 510 205"/></svg><img class="jump-platform jp-lower" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="jump-platform jp-upper" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="jump-player" id="jump-player" src="source_assets/images/level1_player-jump-000.png" alt=""><span class="jump-arrow" aria-hidden="true">↑</span><span class="jump-marker">LIFT / 02</span></div></div>
+      </section>
+
+      <section class="dodge-step training-panel" id="dodge" aria-labelledby="dodge-title"><div class="panel-top"><span class="section-meta">03 / DODGE</span><span>SAFE ROUTE / ACTIVE</span></div><div class="dodge-heading"><span class="step-number">03</span><h2 id="dodge-title">DODGE<span>.</span></h2><p>Avoid enemies and gaps.</p></div><div class="dodge-corridor" role="img" aria-label="Safe route through a gap and an enemy"><div class="dodge-sky"></div><img class="dodge-platform dodge-left" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="dodge-platform dodge-right" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="dodge-enemy" src="source_assets/images/level1_enemy-animation%201-000.png" alt=""><img class="dodge-warning" src="source_assets/images/level1_enemywarning-animation%201-000.png" alt=""><img class="dodge-player" src="source_assets/images/level1_player-jump-000.png" alt=""><svg class="safe-route" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true"><path d="M95 305 C 270 310, 345 290, 460 175 S 665 85, 805 215"/></svg><span class="corridor-label corridor-start">START</span><span class="corridor-label corridor-go">KEEP CLEAR ↗</span></div></section>
+
+      <section class="survive-step training-panel" id="survive" aria-labelledby="survive-title"><div class="panel-top"><span class="section-meta">04 / SURVIVE</span><span>OBJECTIVE / REACH THE DOOR</span></div><div class="survive-words" aria-hidden="true"><span>MOVE</span><span>+</span><span>JUMP</span><span>+</span><span>DODGE</span></div><h2 id="survive-title">SURVIVE<span>.</span></h2><p class="survive-main-copy">Collect the key and enough gold.<br>Reach the door before time runs out.</p><div class="objective-strip"><div><img src="source_assets/images/level1_gold-animation%201-000.png" alt=""><span>GOLD</span></div><span class="objective-join">+</span><div><img src="source_assets/images/level1_key-animation%201-000.png" alt=""><span>KEY</span></div><span class="objective-join">→</span><div><img src="source_assets/images/level1_door-animation%201-000.png" alt=""><span>DOOR</span></div></div><p class="survive-small-copy">Watch your health and the timer. A fall ends the run.</p></section>
+
+      <section class="training-recap training-panel" id="recap" aria-labelledby="recap-title"><div class="panel-top"><span class="section-meta">05 / TRAINING RUN</span><span>START → FINISH</span></div><h2 id="recap-title">PUT IT<br><em>TOGETHER.</em></h2><div class="recap-track"><div class="recap-line"><span id="recap-line-fill"></span></div><div class="recap-runner" id="recap-runner"><img src="source_assets/images/level1_player-walk-000.png" alt=""></div><div class="recap-points"><span>START</span><span>MOVE</span><span>JUMP</span><span>DODGE</span><span>DOOR</span></div></div><p>One route. Every move matters.</p></section>
+
+      <section class="tips training-panel" id="tips" aria-labelledby="tips-title"><div class="panel-top"><span class="section-meta">06 / FIELD NOTES</span><span>KEEP IN MIND</span></div><h2 id="tips-title">THREE<br><em>QUICK TIPS.</em></h2><div class="tips-list"><div><b>01</b><span>KEEP MOVING</span><p>Stay ready for the next platform.</p><i aria-hidden="true">↗</i></div><div><b>02</b><span>TIME YOUR JUMPS</span><p>Look ahead before you leave the ground.</p><i aria-hidden="true">↗</i></div><div><b>03</b><span>WATCH THE TIMER</span><p>Get the key and gold before the door.</p><i aria-hidden="true">↗</i></div></div></section>
+    </div>
+
+    <section class="training-final" id="play" aria-labelledby="training-final-title"><span class="section-meta reveal">07 / YOUR TURN</span><h2 id="training-final-title" class="reveal">YOU KNOW<br><em>THE RULES.</em></h2><div class="training-final-bottom"><button class="play-button" id="play-button" type="button"><span>PLAY NOW</span><span class="button-arrow" aria-hidden="true">→</span></button><a href="gameplay.html">VIEW GAMEPLAY ↗</a></div><span class="training-final-side">NOW MAKE THE JUMP / 4399AGI</span></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top"><div><a class="footer-brand" href="index.html">4399<span>AGI</span></a><span>ONE LAST JUMP</span></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="gameplay.html">Gameplay</a><a href="#top">How to Play</a><a href="characters.html">Characters</a><a href="play.html">Play Now</a></nav></div><div class="footer-bottom"><span>© 2026 4399AGI. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP ↑</a><span>BUILT FOR THE NEXT JUMP.</span></div><div class="footer-giant" aria-hidden="true">4399AGI</div></footer>
+
+  <dialog class="notice-dialog" id="notice-dialog"><button class="dialog-close" type="button" aria-label="Close">×</button><span class="section-meta">4399AGI / NEXT UP</span><h2 id="dialog-title">THE NEXT JUMP<br>IS COMING.</h2><p id="dialog-copy">This part of the world is being built. Keep exploring the training page for now.</p><button class="dialog-back" type="button">BACK TO TRAINING ↗</button></dialog>
+</body>
+</html>

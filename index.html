@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="4399AGI: One Last Jump. Run, jump and dodge through a fast-paced 2D platforming adventure.">
+  <title>4399AGI — One Last Jump</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refinements.css">
+  <link rel="stylesheet" href="visual-tuning.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header">
+    <a class="wordmark" href="#top" aria-label="4399AGI home">4399<span>AGI</span><i aria-hidden="true"></i></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a class="active" href="#top" aria-current="page">Home</a>
+      <a href="gameplay.html">Gameplay</a>
+      <a href="how-to-play.html">How to Play</a>
+      <a href="characters.html">Characters</a>
+      <a class="nav-play" href="play.html">Play Now <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" inert>
+    <span class="menu-index">4399AGI / NAVIGATION</span>
+    <a href="#top" aria-current="page">Home</a>
+    <a href="gameplay.html">Gameplay</a>
+    <a href="how-to-play.html">How to Play</a>
+    <a href="characters.html">Characters</a>
+    <a class="mobile-play" href="play.html">Play Now <span aria-hidden="true">↗</span></a>
+    <span class="menu-bottom">ONE LAST JUMP © 2026</span>
+  </nav>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-orbit" aria-hidden="true"></div>
+      <p class="hero-kicker"><span class="kicker-line"></span> 4399AGI / ONE LAST JUMP</p>
+      <div class="hero-title-wrap" id="hero-title-wrap">
+        <h1 id="hero-title"><span class="title-mask"><span>BREAK THE</span></span><span class="title-mask"><span class="accent-word">BOUNDARIES</span></span></h1>
+        <div class="title-rule" aria-hidden="true"></div>
+      </div>
+      <div class="hero-world" id="hero-world" role="img" aria-label="4399AGI platform world with snowy mountains, floating platforms and the jumping player">
+        <div class="world-back"></div>
+        <div class="world-vignette"></div>
+        <div class="world-grid"></div>
+        <div class="platform platform-a"></div><div class="platform platform-b"></div><div class="platform platform-c"></div>
+        <img class="hero-player" src="source_assets/images/level1_player-jump-000.png" alt="">
+        <img class="hero-coin coin-a" src="source_assets/images/level1_gold-animation%201-000.png" alt="">
+        <img class="hero-coin coin-b" src="source_assets/images/level1_gold-animation%201-000.png" alt="">
+        <span class="world-coordinate">X / 04.399 &nbsp; Y / 01.001</span>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-intro"><p>Run, jump and dodge your way through a fast-paced 2D platforming adventure.</p><a class="text-cta" href="play.html">PLAY NOW <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-scroll"><span>SCROLL TO ENTER</span><span class="scroll-line" aria-hidden="true"></span><span>01 / 04</span></div>
+      </div>
+      <span class="hero-side" aria-hidden="true">A NEW WORLD BEGINS ONE STEP ABOVE THE GROUND</span>
+    </section>
+
+    <section class="statement" id="intro" aria-labelledby="statement-title">
+      <span class="section-meta reveal">01 / THE CHALLENGE</span>
+      <span class="ghost-word" aria-hidden="true">JUMP</span>
+      <div class="statement-lines" id="statement-title">
+        <p class="statement-line from-left">A SMALL <em>JUMP.</em></p>
+        <p class="statement-line from-right">A BIGGER <em>WORLD.</em></p>
+      </div>
+      <div class="statement-foot reveal"><span class="statement-marker">↗</span><p>Every platform is a decision.<br>Every move takes you further.</p><span class="statement-axis">MOVE / RISE / REPEAT</span></div>
+    </section>
+
+    <section class="gameplay" id="gameplay" aria-labelledby="gameplay-title">
+      <div class="gameplay-head"><span class="section-meta reveal">02 / IN MOTION</span><h2 id="gameplay-title" class="reveal">GAMEPLAY<span class="heading-dot">.</span></h2><p class="reveal">RUN. JUMP. DODGE.<br>DON’T STOP.</p></div>
+      <div class="gameplay-stage">
+        <div class="stage-line stage-line-top" aria-hidden="true"></div>
+        <div class="scene scene-main" role="img" aria-label="Preview of the 4399AGI snowy mountain platform level"><div class="scene-bg"></div><div class="scene-platform scene-platform-one"></div><div class="scene-platform scene-platform-two"></div><div class="scene-platform scene-platform-three"></div><img class="scene-player" src="source_assets/images/level1_player-jump-000.png" alt=""><img class="scene-token" src="source_assets/images/level1_gold-animation%201-000.png" alt=""><span class="scene-index">WORLD 01 / KEEP MOVING</span></div>
+        <div class="scene scene-small scene-small-one" role="img" aria-label="4399AGI enemy warning marker beside a moving platform"><div class="scene-bg"></div><img class="scene-detail scene-detail-warning" src="source_assets/images/level1_enemywarning-animation%201-000.png" alt=""><img class="scene-detail scene-detail-platform" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><span class="scene-index">01 / TIMING</span></div>
+        <div class="scene scene-small scene-small-two" role="img" aria-label="4399AGI level key and exit door"><div class="scene-bg"></div><img class="scene-detail scene-detail-door" src="source_assets/images/level1_door-animation%201-000.png" alt=""><img class="scene-detail scene-detail-key" src="source_assets/images/level1_key-animation%201-000.png" alt=""><span class="scene-index">02 / REACH THE DOOR</span></div>
+        <span class="stage-cross" aria-hidden="true">+</span>
+      </div>
+      <div class="gameplay-foot"><p>Precision movement. Shifting platforms.<br>One more try.</p><a class="view-link" href="gameplay.html">VIEW GAMEPLAY <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="marquee-section" aria-label="One Last Jump">
+      <div class="marquee-row"><div>ONE LAST JUMP&nbsp; — &nbsp;ONE LAST JUMP&nbsp; — &nbsp;ONE LAST JUMP&nbsp; — &nbsp;</div></div>
+      <div class="marquee-row marquee-outline" aria-hidden="true"><div>MAKE IT COUNT&nbsp; — &nbsp;MAKE IT COUNT&nbsp; — &nbsp;MAKE IT COUNT&nbsp; — &nbsp;</div></div>
+    </section>
+
+    <section class="final-cta" id="play" aria-labelledby="cta-title">
+      <div class="cta-grid" aria-hidden="true"></div>
+      <span class="section-meta reveal">03 / YOUR MOVE</span>
+      <div class="cta-content"><h2 id="cta-title" class="reveal">READY<br><span>TO JUMP?</span></h2><div class="cta-action reveal"><p>NO DOWNLOAD.<br>START PLAYING.</p><button class="play-button" type="button" id="play-button"><span>PLAY NOW</span><span class="button-arrow" aria-hidden="true">↗</span></button></div></div>
+      <span class="cta-corner">4399AGI // 001</span>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top"><div><a class="footer-brand" href="#top">4399<span>AGI</span></a><span>ONE LAST JUMP</span></div><nav aria-label="Footer navigation"><a href="#top">Home</a><a href="gameplay.html">Gameplay</a><a href="how-to-play.html">How to Play</a><a href="characters.html">Characters</a><a href="play.html">Play Now</a></nav></div><div class="footer-bottom"><span>© 2026 4399AGI. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP ↑</a><span>BUILT FOR THE NEXT JUMP.</span></div><div class="footer-giant" aria-hidden="true">4399AGI</div></footer>
+
+  <dialog class="notice-dialog" id="notice-dialog"><button class="dialog-close" type="button" aria-label="Close">×</button><span class="section-meta">4399AGI / NEXT UP</span><h2 id="dialog-title">THE NEXT JUMP<br>IS COMING.</h2><p id="dialog-copy">This part of the world is being built. For now, explore the homepage.</p><button class="dialog-back" type="button">BACK TO HOME ↗</button></dialog>
+</body>
+</html>

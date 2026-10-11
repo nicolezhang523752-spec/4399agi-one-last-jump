@@ -1,0 +1,5 @@
+.wrangler/
+dist/
+cloudflare-pages-upload/
+4399AGI_Cloudflare_Pages_Upload.zip
+node_modules/

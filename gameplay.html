@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="Explore the movement, timing and challenge of 4399AGI: One Last Jump.">
+  <title>Gameplay — 4399AGI / One Last Jump</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="gameplay.css">
+  <link rel="stylesheet" href="refinements.css">
+  <link rel="stylesheet" href="visual-tuning.css">
+  <script src="script.js" defer></script>
+  <script src="gameplay.js" defer></script>
+</head>
+<body class="gameplay-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header">
+    <a class="wordmark" href="index.html" aria-label="4399AGI home">4399<span>AGI</span><i aria-hidden="true"></i></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="#top" aria-current="page">Gameplay</a>
+      <a href="how-to-play.html">How to Play</a>
+      <a href="characters.html">Characters</a>
+      <a class="nav-play" href="play.html">Play Now <span aria-hidden="true">↗</span></a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" inert>
+    <span class="menu-index">4399AGI / NAVIGATION</span>
+    <a href="index.html">Home</a>
+    <a href="#top" aria-current="page">Gameplay</a>
+    <a href="how-to-play.html">How to Play</a>
+    <a href="characters.html">Characters</a>
+    <a class="mobile-play" href="play.html">Play Now <span aria-hidden="true">↗</span></a>
+    <span class="menu-bottom">ONE LAST JUMP © 2026</span>
+  </nav>
+
+  <main id="main">
+    <section class="gp-hero" id="top" aria-labelledby="gp-title">
+      <div class="gp-hero-grid" aria-hidden="true"></div>
+      <span class="gp-hero-index">02 / GAMEPLAY</span>
+      <div class="gp-hero-scene gp-scene" id="gp-hero-scene" role="img" aria-label="4399AGI game art showing the player jumping between floating platforms in a mountain level">
+        <div class="gp-sky"></div><div class="gp-scene-shade"></div>
+        <img class="gp-platform gp-hero-platform gp-hp-one" src="source_assets/images/movingplatformup-animation%201-000.png" alt="">
+        <img class="gp-platform gp-hero-platform gp-hp-two" src="source_assets/images/level2platform-animation%201-000.png" alt="">
+        <img class="gp-platform gp-hero-platform gp-hp-three" src="source_assets/images/movingplatformup-animation%201-000.png" alt="">
+        <img class="gp-hero-player" src="source_assets/images/level1_player-jump-000.png" alt="">
+        <img class="gp-hero-enemy" src="source_assets/images/level1_enemy-animation%201-000.png" alt="">
+        <span class="gp-scene-label">LEVEL / 01 &nbsp;—&nbsp; MOVE / 04</span>
+      </div>
+      <div class="gp-hero-title-wrap"><h1 id="gp-title">GAME<br><span>PLAY</span><i aria-hidden="true">↗</i></h1></div>
+      <div class="gp-hero-info"><p>RUN.<br>JUMP.<br>DODGE.<br>KEEP GOING.</p><span>MOVEMENT / SPEED / TIMING</span></div>
+      <a class="gp-hero-scroll" href="#mechanics">SCROLL TO MOVE <span aria-hidden="true">↓</span></a>
+      <span class="gp-hero-coordinate" aria-hidden="true">X / 4399 &nbsp; Y / 0002</span>
+    </section>
+
+    <section class="mechanics" id="mechanics" aria-labelledby="mechanics-title">
+      <div class="mechanics-sticky">
+        <div class="mechanics-top"><span class="section-meta">03 / THE MOVES</span><span class="mechanics-progress">01 — 04</span></div>
+        <div class="mechanics-layout">
+          <div class="mechanics-copy"><h2 id="mechanics-title" class="sr-only">Core mechanics</h2>
+            <div class="mechanic-copy active" data-mechanic="0"><span class="mechanic-number">01 / 04</span><h3>RUN<span>.</span></h3><p>Keep your momentum.</p><div class="mechanic-mobile-scene gp-scene" role="img" aria-label="4399AGI player running through a mountain level"><div class="gp-sky"></div><img src="source_assets/images/level1_player-walk-000.png" alt=""></div></div>
+            <div class="mechanic-copy" data-mechanic="1"><span class="mechanic-number">02 / 04</span><h3>JUMP<span>.</span></h3><p>Time every platform.</p><div class="mechanic-mobile-scene gp-scene" role="img" aria-label="4399AGI player jumping between platforms"><div class="gp-sky"></div><img src="source_assets/images/level1_player-jump-000.png" alt=""></div></div>
+            <div class="mechanic-copy" data-mechanic="2"><span class="mechanic-number">03 / 04</span><h3>DODGE<span>.</span></h3><p>Avoid what stands in your way.</p><div class="mechanic-mobile-scene gp-scene" role="img" aria-label="4399AGI player passing an enemy"><div class="gp-sky"></div><img src="source_assets/images/level1_enemy-animation%201-000.png" alt=""></div></div>
+            <div class="mechanic-copy" data-mechanic="3"><span class="mechanic-number">04 / 04</span><h3>SURVIVE<span>.</span></h3><p>Stay in motion.</p><div class="mechanic-mobile-scene gp-scene" role="img" aria-label="4399AGI player moving through the level"><div class="gp-sky"></div><img src="source_assets/images/level1_player-jump-000.png" alt=""></div></div>
+          </div>
+          <div class="mechanics-visual" role="img" aria-label="Game art changes to show running, jumping, dodging and surviving">
+            <div class="mechanics-visual-bg"></div>
+            <img class="mechanics-platform one" src="source_assets/images/level2platform-animation%201-000.png" alt="">
+            <img class="mechanics-platform two" src="source_assets/images/movingplatformup-animation%201-000.png" alt="">
+            <img class="mechanics-player" id="mechanics-player" src="source_assets/images/level1_player-walk-000.png" alt="">
+            <img class="mechanics-enemy" src="source_assets/images/level1_enemy-animation%201-000.png" alt="">
+            <div class="mechanics-reticle" aria-hidden="true"></div>
+            <span class="mechanics-visual-tag">STATUS / ACTIVE</span>
+          </div>
+        </div>
+        <div class="mechanics-bottom"><div class="mechanics-meter"><span></span></div><span>MOVE WITH THE WORLD →</span></div>
+      </div>
+    </section>
+
+    <section class="progression" id="progression" aria-labelledby="progression-title">
+      <div class="progression-intro"><span class="section-meta reveal">04 / LEVEL PROGRESSION</span><h2 id="progression-title" class="reveal">EVERY LEVEL<br><em>PUSHES HARDER.</em></h2><p class="reveal">The path keeps changing.<br>Keep up.</p></div>
+      <div class="level-stack">
+        <article class="level level-one"><div class="level-copy"><span>LEVEL / 01</span><h3>FIND THE<br>RHYTHM.</h3><p>Move. Jump. Land.</p></div><div class="level-visual level-visual-one gp-scene" role="img" aria-label="Level one inspired composition using real 4399AGI background, player and platforms"><div class="gp-sky"></div><img class="level-platform lp-a" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="level-platform lp-b" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="level-player" src="source_assets/images/level1_player-walk-000.png" alt=""></div></article>
+        <article class="level level-two"><div class="level-copy"><span>LEVEL / 02</span><h3>STAY IN<br>MOTION.</h3><p>Platforms move. So do you.</p></div><div class="level-visual level-visual-two gp-scene" role="img" aria-label="Level two inspired composition using moving platforms and the jumping player"><div class="gp-sky"></div><img class="level-platform lp-a" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="level-platform lp-b" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="level-player" src="source_assets/images/level1_player-jump-000.png" alt=""></div></article>
+        <article class="level level-three"><div class="level-copy"><span>LEVEL / 03</span><h3>DON’T<br>HESITATE.</h3><p>Watch the gap.</p></div><div class="level-visual level-visual-three gp-scene" role="img" aria-label="Level three inspired composition using real 4399AGI player, enemy and floating platform art"><div class="gp-sky"></div><img class="level-platform lp-a" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="level-platform lp-b" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="level-player" src="source_assets/images/level1_player-jump-000.png" alt=""><img class="level-enemy" src="source_assets/images/level1_enemy-animation%201-000.png" alt=""></div></article>
+      </div>
+    </section>
+
+    <section class="showcase" id="showcase" aria-labelledby="showcase-title">
+      <div class="showcase-sticky"><div class="showcase-heading"><span class="section-meta">05 / THE GAME IN MOTION</span><h2 id="showcase-title">KEEP<br><em>MOVING.</em></h2><span>SCROLL TO EXPLORE →</span></div>
+        <div class="showcase-track" id="showcase-track">
+          <figure class="showcase-frame"><div class="showcase-image gp-scene"><div class="gp-sky"></div><img class="sf-platform sfp-a" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="sf-platform sfp-b" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="sf-player" src="source_assets/images/level1_player-walk-000.png" alt=""></div><figcaption><b>01</b><span>MOVE</span></figcaption></figure>
+          <figure class="showcase-frame"><div class="showcase-image gp-scene"><div class="gp-sky"></div><img class="sf-platform sfp-a" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="sf-platform sfp-b" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="sf-player" src="source_assets/images/level1_player-jump-000.png" alt=""></div><figcaption><b>02</b><span>TIMING</span></figcaption></figure>
+          <figure class="showcase-frame"><div class="showcase-image gp-scene"><div class="gp-sky"></div><img class="sf-platform sfp-a" src="source_assets/images/level2platform-animation%201-000.png" alt=""><img class="sf-platform sfp-b" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><img class="sf-player" src="source_assets/images/level1_player-jump-000.png" alt=""><img class="sf-enemy" src="source_assets/images/level1_enemy-animation%201-000.png" alt=""></div><figcaption><b>03</b><span>PRECISION</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="challenge" id="challenge" aria-labelledby="challenge-title">
+      <div class="challenge-grid" aria-hidden="true"></div>
+      <span class="section-meta reveal">06 / THE CHALLENGE</span>
+      <h2 id="challenge-title" class="reveal">NO ROOM<br><em>FOR MISTAKES.</em></h2>
+      <p class="challenge-copy reveal">Platforms shift. Enemies close in.<br>One move changes everything.</p>
+      <div class="hazard hazard-enemy" aria-hidden="true"><span>ENEMY / 01</span><img src="source_assets/images/level1_enemy-animation%201-000.png" alt=""></div>
+      <div class="hazard hazard-platform" aria-hidden="true"><span>PLATFORM / MOVING</span><img src="source_assets/images/movingplatformup-animation%201-000.png" alt=""></div>
+      <div class="hazard hazard-warning" aria-hidden="true"><span>WARNING / ACTIVE</span><img src="source_assets/images/level1_enemywarning-animation%201-000.png" alt=""></div>
+      <div class="challenge-line" aria-hidden="true"></div>
+    </section>
+
+    <section class="gp-marquee" aria-label="Run, jump, dodge, repeat"><div class="gp-marquee-row"><div>RUN — JUMP — DODGE — REPEAT — RUN — JUMP — DODGE — REPEAT — </div></div><div class="gp-marquee-row gp-marquee-green" aria-hidden="true"><div>RUN — JUMP — DODGE — REPEAT — RUN — JUMP — DODGE — REPEAT — </div></div></section>
+
+    <section class="gp-final" id="play" aria-labelledby="gp-final-title"><span class="section-meta reveal">07 / YOUR TURN</span><h2 id="gp-final-title" class="reveal">THINK YOU<br><em>CAN MAKE IT?</em></h2><div class="gp-final-actions"><button class="play-button" id="play-button" type="button"><span>PLAY NOW</span><span class="button-arrow" aria-hidden="true">→</span></button><div><a href="how-to-play.html">HOW TO PLAY ↗</a><a href="characters.html">CHARACTERS ↗</a></div></div><span class="gp-final-side">ONE LAST JUMP / 4399AGI</span></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top"><div><a class="footer-brand" href="index.html">4399<span>AGI</span></a><span>ONE LAST JUMP</span></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="#top">Gameplay</a><a href="how-to-play.html">How to Play</a><a href="characters.html">Characters</a><a href="play.html">Play Now</a></nav></div><div class="footer-bottom"><span>© 2026 4399AGI. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP ↑</a><span>BUILT FOR THE NEXT JUMP.</span></div><div class="footer-giant" aria-hidden="true">4399AGI</div></footer>
+
+  <dialog class="notice-dialog" id="notice-dialog"><button class="dialog-close" type="button" aria-label="Close">×</button><span class="section-meta">4399AGI / NEXT UP</span><h2 id="dialog-title">THE NEXT JUMP<br>IS COMING.</h2><p id="dialog-copy">This part of the world is being built. For now, explore the gameplay page.</p><button class="dialog-back" type="button">BACK TO GAMEPLAY ↗</button></dialog>
+</body>
+</html>

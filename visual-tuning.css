@@ -1,0 +1,129 @@
+/* A neutral black gallery stage; the blue remains inside actual game imagery. */
+:root{--bg:#050505}
+body,.play-page{background:#050505}
+.mobile-menu,.gp-hero,.mechanics,.showcase,.training-flow,.move-step,.dodge-step,.training-recap,.actions,.gallery{background:#050505}
+.gameplay,.progression,.control-lab,.jump-step,.tips,.profile,.endings{background:#0b0b0b}
+.gp-final,.survive-step,.training-final,.threats,.archive-final{background:#080808}
+.site-footer{background:#030303}
+.notice-dialog,.game-message{background:#0a0a0a}
+.control-key{background:#151515}
+.game-shell,.game-loading{background:#010101}
+.hero-grid,.gp-hero-grid,.training-hero-grid,.archive-grid,.launch-grid{opacity:.55}
+
+/* Preserve the heroes and climaxes; quiet the repeated giant headings. */
+.hero h1{font-size:clamp(88px,12.8vw,220px)}
+.statement-line{font-size:clamp(70px,10vw,175px)}
+.ghost-word{font-size:36vw}
+.gameplay h2{font-size:clamp(85px,12vw,205px)}
+.marquee-row{font-size:clamp(84px,11vw,180px)}
+.cta-content h2{font-size:clamp(115px,17vw,290px)}
+.footer-giant{font-size:clamp(155px,24vw,455px)}
+.statement{min-height:110vh}
+.marquee-section{height:250px}
+
+.gp-hero h1{font-size:clamp(140px,16vw,275px)}
+.mechanic-copy h3{font-size:clamp(135px,16vw,310px)}
+.progression h2{font-size:clamp(85px,12vw,205px)}
+.level-copy h3{font-size:clamp(70px,7vw,125px)}
+.showcase h2{font-size:clamp(95px,12vw,200px)}
+.challenge h2{font-size:clamp(105px,15vw,240px)}
+.gp-marquee-row{font-size:clamp(85px,10vw,175px)}
+.gp-final h2{font-size:clamp(115px,16vw,280px)}
+
+.training-hero h1{font-size:clamp(125px,17vw,285px)}
+.control-copy h2{font-size:clamp(90px,13vw,215px)}
+.move-heading h2{font-size:clamp(135px,18vw,310px)}
+.jump-copy h2{font-size:clamp(135px,17vw,290px)}
+.dodge-heading h2{font-size:clamp(125px,18vw,285px)}
+.survive-words{font-size:clamp(45px,7vw,105px)}
+.survive-step h2{font-size:clamp(125px,19vw,320px)}
+.training-recap h2{font-size:clamp(110px,15vw,250px)}
+.tips h2{font-size:clamp(105px,13vw,225px)}
+.training-final h2{font-size:clamp(110px,17vw,290px)}
+
+.section-heading{font-size:clamp(90px,11.5vw,200px)}
+.hero-ghost{font-size:min(43vw,700px)}
+.archive-hero h1{font-size:clamp(100px,14vw,240px)}
+.profile-backnum{font-size:min(32vw,500px)}
+.profile-copy h2{font-size:clamp(105px,11.5vw,210px)}
+.specimen-details h3{font-size:clamp(76px,9vw,155px)}
+.gallery-word{font-size:min(11vw,175px)}
+.endings h2{font-size:clamp(110px,16vw,290px)}
+.archive-transition{font-size:clamp(85px,15vw,245px)}
+.archive-final h2{font-size:clamp(100px,16vw,270px)}
+
+.launch-center h1{font-size:clamp(120px,17vw,290px)}
+.game-top h2{font-size:clamp(65px,8vw,135px)}
+
+/* The home preview now cuts to hazards and the level exit instead of repeating the player. */
+.scene-small-one,.scene-small-two{background:#101010;isolation:isolate}
+.scene-small-one .scene-bg,.scene-small-two .scene-bg{display:none}
+.scene-small-one::before{content:'';position:absolute;inset:0;background:url('source_assets/images/level1_tilemap.png') 4% 49%/125% auto;opacity:.26}
+.scene-small-two::before{content:'';position:absolute;inset:0;background:url('source_assets/images/level1_tilemap.png') 5% 14%/135% auto;opacity:.2}
+.scene-detail{position:absolute;z-index:2;object-fit:contain;image-rendering:auto;filter:drop-shadow(7px 12px 8px rgba(0,0,0,.45))}
+.scene-detail-warning{width:22%;left:18%;top:17%}
+.scene-detail-platform{width:77%;right:-13%;bottom:10%}
+.scene-detail-door{width:22%;right:19%;top:15%;image-rendering:pixelated}
+.scene-detail-key{width:23%;left:22%;top:28%;image-rendering:pixelated}
+
+/* Level-specific crops of the game's tile atlas add variation to the action page. */
+.level-two .gp-sky,.showcase-frame:nth-child(2) .gp-sky{background:url('source_assets/images/level1_tilemap.png') 0 50%/auto 210% no-repeat;filter:saturate(.7) brightness(.65)}
+.level-three .gp-sky,.showcase-frame:nth-child(3) .gp-sky{background:url('source_assets/images/level1_tilemap.png') 0 6%/auto 210% no-repeat;filter:saturate(.8) brightness(.55)}
+.level-two .level-visual,.level-three .level-visual,.showcase-frame:nth-child(2) .showcase-image,.showcase-frame:nth-child(3) .showcase-image{background:#101010}
+.training-hero-sky{filter:saturate(.55) brightness(.58)}
+.gallery-player img{object-position:40% 30%}
+
+/* A real runtime pause state keeps the canvas visible behind the controls. */
+.pause-overlay{position:absolute;z-index:5;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;background:rgba(3,3,3,.7);backdrop-filter:blur(2px);text-align:center}
+.pause-overlay span{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--cyan)}
+.pause-overlay h3{margin:0;font:400 clamp(85px,13vw,200px)/.8 var(--font-display)}
+.pause-overlay button{border:1px solid var(--green);background:var(--green);color:#030303;padding:16px 28px;min-height:54px;font:700 13px var(--font-body);letter-spacing:.13em;cursor:pointer}
+.pause-overlay button:hover{background:var(--cyan);border-color:var(--cyan)}
+.utility-actions #pause-game{color:var(--green);cursor:pointer}
+.utility-actions #pause-game:hover{color:var(--cyan)}
+
+@media(max-width:700px){
+  .hero h1{font-size:clamp(76px,16vw,112px)}
+  .statement-line{font-size:clamp(56px,11vw,88px)}
+  .ghost-word{font-size:55vw}
+  .gameplay h2{font-size:clamp(75px,14.5vw,120px)}
+  .marquee-row{font-size:21vw}
+  .cta-content h2{font-size:clamp(88px,20vw,145px)}
+  .marquee-section{height:165px}
+  .gp-hero h1{font-size:clamp(112px,29vw,190px)}
+  .mechanic-copy h3{font-size:clamp(100px,24vw,180px)}
+  .progression h2{font-size:clamp(75px,15vw,115px)}
+  .level-copy h3{font-size:clamp(70px,15vw,110px)}
+  .showcase h2{font-size:clamp(95px,19vw,155px)}
+  .challenge h2{font-size:clamp(84px,17vw,138px)}
+  .gp-marquee-row{font-size:22vw}
+  .gp-final h2{font-size:clamp(92px,19vw,155px)}
+  .training-hero h1{font-size:clamp(100px,23vw,180px)}
+  .control-copy h2{font-size:clamp(90px,20vw,145px)}
+  .move-heading h2,.jump-copy h2,.dodge-heading h2{font-size:clamp(98px,22vw,175px)}
+  .survive-step h2{font-size:clamp(95px,21vw,175px)}
+  .training-recap h2,.training-final h2{font-size:clamp(92px,19vw,160px)}
+  .tips h2{font-size:clamp(88px,18vw,150px)}
+  .archive-hero h1{font-size:22vw}
+  .section-heading{font-size:clamp(85px,18vw,140px)}
+  .profile-copy h2{font-size:clamp(92px,20vw,155px)}
+  .specimen-details h3{font-size:17vw}
+  .endings h2{font-size:21vw}
+  .archive-transition{font-size:20vw}
+  .archive-final h2{font-size:clamp(85px,19vw,150px)}
+  .launch-center h1{font-size:22vw}
+  .game-top h2{font-size:17vw}
+  .pause-overlay h3{font-size:clamp(70px,19vw,125px)}
+}
+@media(max-width:390px){
+  .hero h1{font-size:15vw}
+  .statement-line{font-size:10.5vw}
+  .gameplay h2{font-size:14.5vw}
+  .cta-content h2{font-size:19vw}
+  .gp-hero h1{font-size:28vw}
+  .training-hero h1{font-size:22vw}
+  .archive-hero h1{font-size:21vw}
+  .archive-hero h1 span:nth-child(2){font-size:15vw}
+  .archive-final h2{font-size:19vw}
+}
+@media(prefers-reduced-motion:reduce){.pause-overlay{backdrop-filter:none}}
