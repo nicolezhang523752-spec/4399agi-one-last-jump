@@ -136,9 +136,10 @@
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('close', () => {
     clearFieldErrors();
-    if (document.activeElement === document.body || document.activeElement === mobileAccountLink) {
-      (matchMedia('(max-width: 700px)').matches ? document.querySelector('#menu-toggle') : accountLink)?.focus();
-    }
+    // Native dialog focus restoration can run after `close`; focus a visible trigger next tick.
+    setTimeout(() => {
+      if (!dialog.open) (matchMedia('(max-width: 700px)').matches ? document.querySelector('#menu-toggle') : accountLink)?.focus();
+    }, 0);
   });
   tabs.addEventListener('click', event => {
     const button = event.target.closest('[data-mode]');
