@@ -11,8 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="refinements.css">
-  <link rel="stylesheet" href="visual-tuning.css">
+  <link rel="stylesheet" href="visual-tuning.css"><link rel="stylesheet" href="accessibility.css">
   <script src="script.js" defer></script>
+  <link rel="stylesheet" href="auth.css">
+  <script src="js/supabase-config.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/supabase.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -67,20 +72,21 @@
     <section class="statement" id="intro" aria-labelledby="statement-title">
       <span class="section-meta reveal">01 / THE CHALLENGE</span>
       <span class="ghost-word" aria-hidden="true">JUMP</span>
-      <div class="statement-lines" id="statement-title">
+      <div class="statement-lines">
+        <h2 class="visually-hidden" id="statement-title">A small jump. A bigger world.</h2>
         <p class="statement-line from-left">A SMALL <em>JUMP.</em></p>
         <p class="statement-line from-right">A BIGGER <em>WORLD.</em></p>
       </div>
-      <div class="statement-foot reveal"><span class="statement-marker">↗</span><p>Every platform is a decision.<br>Every move takes you further.</p><span class="statement-axis">MOVE / RISE / REPEAT</span></div>
+      <div class="statement-foot reveal"><span class="statement-marker" aria-hidden="true">↗</span><p>Navigate moving platforms, collect keys, avoid hazards, and reach the exit.</p><span class="statement-axis" aria-hidden="true">MOVE / RISE / REPEAT</span></div>
     </section>
 
     <section class="gameplay" id="gameplay" aria-labelledby="gameplay-title">
       <div class="gameplay-head"><span class="section-meta reveal">02 / IN MOTION</span><h2 id="gameplay-title" class="reveal">GAMEPLAY<span class="heading-dot">.</span></h2><p class="reveal">RUN. JUMP. DODGE.<br>DON’T STOP.</p></div>
       <div class="gameplay-stage">
         <div class="stage-line stage-line-top" aria-hidden="true"></div>
-        <div class="scene scene-main" role="img" aria-label="Preview of the 4399AGI snowy mountain platform level"><div class="scene-bg"></div><div class="scene-platform scene-platform-one"></div><div class="scene-platform scene-platform-two"></div><div class="scene-platform scene-platform-three"></div><img class="scene-player" src="source_assets/images/level1_player-jump-000.png" alt=""><img class="scene-token" src="source_assets/images/level1_gold-animation%201-000.png" alt=""><span class="scene-index">WORLD 01 / KEEP MOVING</span></div>
-        <div class="scene scene-small scene-small-one" role="img" aria-label="4399AGI enemy warning marker beside a moving platform"><div class="scene-bg"></div><img class="scene-detail scene-detail-warning" src="source_assets/images/level1_enemywarning-animation%201-000.png" alt=""><img class="scene-detail scene-detail-platform" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><span class="scene-index">01 / TIMING</span></div>
-        <div class="scene scene-small scene-small-two" role="img" aria-label="4399AGI level key and exit door"><div class="scene-bg"></div><img class="scene-detail scene-detail-door" src="source_assets/images/level1_door-animation%201-000.png" alt=""><img class="scene-detail scene-detail-key" src="source_assets/images/level1_key-animation%201-000.png" alt=""><span class="scene-index">02 / REACH THE DOOR</span></div>
+        <div class="scene scene-main" role="img" aria-label="Movement: the player jumps between platforms in a snowy mountain level while collecting a coin"><div class="scene-bg"></div><div class="scene-platform scene-platform-one"></div><div class="scene-platform scene-platform-two"></div><div class="scene-platform scene-platform-three"></div><img class="scene-player" src="source_assets/images/level1_player-jump-000.png" alt=""><img class="scene-token" src="source_assets/images/level1_gold-animation%201-000.png" alt=""><span class="scene-index" aria-hidden="true">WORLD 01 / MOVEMENT</span></div>
+        <div class="scene scene-small scene-small-one" role="img" aria-label="Timing: an enemy warning marker appears beside a moving platform"><div class="scene-bg"></div><img class="scene-detail scene-detail-warning" src="source_assets/images/level1_enemywarning-animation%201-000.png" alt=""><img class="scene-detail scene-detail-platform" src="source_assets/images/movingplatformup-animation%201-000.png" alt=""><span class="scene-index" aria-hidden="true">01 / TIMING</span></div>
+        <div class="scene scene-small scene-small-two" role="img" aria-label="Objective: collect the key and reach the exit door"><div class="scene-bg"></div><img class="scene-detail scene-detail-door" src="source_assets/images/level1_door-animation%201-000.png" alt=""><img class="scene-detail scene-detail-key" src="source_assets/images/level1_key-animation%201-000.png" alt=""><span class="scene-index" aria-hidden="true">02 / OBJECTIVE</span></div>
         <span class="stage-cross" aria-hidden="true">+</span>
       </div>
       <div class="gameplay-foot"><p>Precision movement. Shifting platforms.<br>One more try.</p><a class="view-link" href="gameplay.html">VIEW GAMEPLAY <span aria-hidden="true">↗</span></a></div>
