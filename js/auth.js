@@ -128,7 +128,7 @@
     if (document.body.classList.contains('menu-open')) document.querySelector('#menu-toggle')?.click();
     dialog.showModal();
     if (currentUser) dialog.querySelector('.account-logout').focus();
-    else if (client) field('email').focus();
+    else if (client) field(mode === 'signup' ? 'username' : 'email').focus();
     else dialog.querySelector('.account-close').focus();
   }
   [accountLink, mobileAccountLink].forEach(link => link.addEventListener('click', openAccount));
