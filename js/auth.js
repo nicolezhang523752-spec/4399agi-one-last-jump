@@ -136,7 +136,9 @@
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('close', () => {
     clearFieldErrors();
-    if (document.activeElement === document.body) (matchMedia('(max-width: 700px)').matches ? mobileAccountLink : accountLink).focus();
+    if (document.activeElement === document.body || document.activeElement === mobileAccountLink) {
+      (matchMedia('(max-width: 700px)').matches ? document.querySelector('#menu-toggle') : accountLink)?.focus();
+    }
   });
   tabs.addEventListener('click', event => {
     const button = event.target.closest('[data-mode]');
