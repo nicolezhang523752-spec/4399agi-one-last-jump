@@ -21,6 +21,10 @@
 .account-submit,.account-logout{display:flex;justify-content:space-between;align-items:center;gap:24px;width:100%;min-height:56px;margin-top:12px;padding:12px 18px;border:0;background:var(--green);color:#050505;font:400 29px var(--font-display);cursor:pointer;clip-path:polygon(0 0,100% 0,100% 80%,94% 100%,0 100%)}
 .account-submit:hover,.account-logout:hover{background:var(--cyan)}
 .account-submit:disabled,.account-logout:disabled{opacity:.65;cursor:wait}
+.account-resend{justify-self:start;min-height:44px;padding:6px 0;border:0;background:transparent;color:var(--cyan);font:700 14px var(--font-body);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.account-resend:hover{color:var(--green)}
+.account-resend:disabled{opacity:.65;cursor:wait}
+.account-resend:focus-visible{outline:3px solid var(--green);outline-offset:3px}
 .account-profile p{font-size:16px;line-height:1.5;color:#d4dfe8;overflow-wrap:anywhere}
 .account-profile strong{color:var(--green)}
 .account-status{min-height:1.5em;margin:18px 0 0;color:var(--cyan);font-size:14px;line-height:1.45}

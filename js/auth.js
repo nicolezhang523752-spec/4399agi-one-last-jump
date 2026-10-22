@@ -31,6 +31,7 @@
       <div class="account-field"><label for="account-password">Password</label><input id="account-password" name="password" type="password" autocomplete="current-password" required aria-describedby="account-password-error"><small id="account-password-error" class="field-error"></small></div>
       <div class="account-field signup-only" hidden><label for="account-confirm">Confirm password</label><input id="account-confirm" name="confirm" type="password" autocomplete="new-password" aria-describedby="account-confirm-error"><small id="account-confirm-error" class="field-error"></small></div>
       <button class="account-submit" type="submit">SIGN IN <span aria-hidden="true">↗</span></button>
+      <button class="account-resend" type="button">Resend confirmation email</button>
     </form>
     <div class="account-profile" hidden><p>Signed in as <strong id="account-username-display"></strong></p><button class="account-logout" type="button">LOG OUT ↗</button></div>
     <p class="account-status" role="status" aria-live="polite"></p>`;
@@ -41,6 +42,7 @@
   const tabs = dialog.querySelector('.account-tabs');
   const profilePanel = dialog.querySelector('.account-profile');
   const submit = dialog.querySelector('.account-submit');
+  const resend = dialog.querySelector('.account-resend');
   const field = name => form.elements.namedItem(name);
   let mode = 'login';
   let currentUser = null;
@@ -158,6 +160,38 @@
   }
 
   client.auth.onAuthStateChange(handleAuthState);
+
+  resend.addEventListener('click', async () => {
+    if (busy) return;
+    clearFieldErrors();
+    const email = field('email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      fieldError('email', 'Enter your account email address first.');
+      field('email').focus();
+      return;
+    }
+    busy = true;
+    resend.disabled = true;
+    setStatus('Sending confirmation email…');
+    try {
+      const { error } = await client.auth.resend({
+        type: 'signup',
+        email,
+        options: { emailRedirectTo: new URL('index.html', location.href).href }
+      });
+      if (error) throw error;
+      setStatus('If this account still needs confirmation, a new email has been requested. Check your inbox and spam folder.');
+    } catch (error) {
+      const code = String(error?.code || '');
+      const message = String(error?.message || '').toLowerCase();
+      setStatus(code.includes('rate_limit') || message.includes('rate limit')
+        ? 'Email sending is temporarily limited. Please wait before trying again.'
+        : 'Could not resend the confirmation email. Please try again later.', true);
+    } finally {
+      busy = false;
+      resend.disabled = false;
+    }
+  });
 
   form.addEventListener('submit', async event => {
     event.preventDefault();
