@@ -37,6 +37,56 @@ runOnStartup(async runtime => {
         window.parent.postMessage({type: "4399agi:toggle-pause"}, shellOrigin);
     }, true);
     if (window.parent !== window) window.parent.postMessage({type: "4399agi:pause-ready"}, shellOrigin);
+
+    // A run is recorded only when Construct reaches its actual win/game-over
+    // layouts. The export has no native Score variable, so derive one from
+    // reached level, collected gold and the remaining timer on a win.
+    let runId = null;
+    let runActive = false;
+    let runSeconds = 0;
+    let furthestLevel = 0;
+    let goldByLevel = [0, 0, 0];
+    let lastTimeLeft = 0;
+    function gameplayLevel(name) {
+        const match = /^Level([1-3])$/.exec(name || "");
+        return match ? Number(match[1]) : 0;
+    }
+    runtime.addEventListener("afteranylayoutstart", () => {
+        const name = runtime.layout?.name || "";
+        const level = gameplayLevel(name);
+        if (level === 1) {
+            runId = crypto.randomUUID();
+            runActive = true;
+            runSeconds = 0;
+            furthestLevel = 1;
+            goldByLevel = [0, 0, 0];
+            lastTimeLeft = 0;
+        } else if (level && runActive) {
+            furthestLevel = Math.max(furthestLevel, level);
+        } else if ((name === "WinScreen" || name === "Gameover Screen") && runActive) {
+            runActive = false;
+            const won = name === "WinScreen";
+            const totalGold = goldByLevel.reduce((total, gold) => total + gold, 0);
+            const score = furthestLevel * 1000 + totalGold * 100 + (won ? 500 + lastTimeLeft * 5 : 0);
+            if (window.parent !== window) window.parent.postMessage({
+                type: "4399agi:run-complete",
+                run_id: runId,
+                score: Math.max(0, Math.round(score)),
+                level_reached: furthestLevel,
+                completion_time: Math.max(0, Math.round(runSeconds * 1000))
+            }, shellOrigin);
+        }
+    });
+    runtime.addEventListener("tick", () => {
+        if (!runActive || shellPaused) return;
+        const level = gameplayLevel(runtime.layout?.name);
+        if (!level) return;
+        runSeconds += Math.max(0, runtime.dt);
+        const gold = Number(runtime.globalVars.Goldcollected);
+        if (Number.isFinite(gold)) goldByLevel[level - 1] = Math.max(goldByLevel[level - 1], Math.max(0, Math.floor(gold)));
+        const timeLeft = Number(runtime.globalVars.Timeleft);
+        if (Number.isFinite(timeLeft)) lastTimeLeft = Math.max(0, Math.floor(timeLeft));
+    });
     const MAX_SPEED = 330;
     const ACCEL = 1500;
     const DECEL = 1500;

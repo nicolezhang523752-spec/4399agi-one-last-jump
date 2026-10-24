@@ -3,3 +3,12 @@
 @media(max-width:600px){.launch-hero{height:100svh;min-height:660px;padding:100px 20px 30px}.launch-hero-art{width:115%;height:64%;right:-30%;top:17%}.launch-center h1{font-size:26vw;margin-bottom:45px}.launch-bottom{display:block}.launch-bottom p{font-size:13px;margin-bottom:24px}.launch-button{width:100%;min-height:110px}.launch-corner{display:none}.game-section{padding:75px 20px 65px;min-height:0}.game-top h2{font-size:20vw}.game-status{font-size:8px;text-align:right}.game-shell{aspect-ratio:16/10;min-height:0;max-height:none}.game-placeholder img{height:64%}.game-placeholder p{font-size:10px}.game-message h3{font-size:15vw}.game-message p{font-size:11px}.game-message button{padding:13px}.controls-reminder{gap:18px}.controls-reminder span{font-size:21px}.controls-reminder b{font-size:9px;margin-left:5px}.utility-actions{width:100%;justify-content:space-between;gap:12px}.utility-actions button,.utility-actions a{font-size:9px}.keyboard-note{display:block}.play-footer{padding:26px 20px}.play-footer nav{gap:16px}.play-page.game-entered .launch-hero{height:160px;min-height:160px;padding:95px 20px 0}.play-page.game-entered .launch-center h1{font-size:38px}.play-page.game-entered .launch-hero-art{opacity:0}}
 @media(prefers-reduced-motion:reduce){.launch-hero,.launch-hero-art,.launch-center h1 span,.loading-line{animation:none!important;transition:none!important}.loading-line{background:var(--green)}}
 @media(max-width:600px){.launch-hero-art{width:105%;right:-10%}.launch-hero-art img{width:49%;right:4%}}
+/* Result feedback appears only when the real game reaches a result layout. */
+.score-feedback{display:flex;align-items:center;gap:18px;flex-wrap:wrap;border-top:1px solid var(--cyan);padding:18px 0 0;margin-top:18px;font-family:var(--font-body)}
+.score-feedback[hidden]{display:none}
+.score-feedback strong{font:400 31px/.9 var(--font-display);color:var(--green)}
+.score-feedback[data-state="error"] strong{color:#ffc4c4}
+.score-feedback span{font-size:13px;line-height:1.5;color:#c4d4dd}
+.score-feedback button{border:1px solid var(--cyan);background:transparent;color:var(--cyan);padding:10px 13px;min-height:44px;font:700 12px var(--font-body);cursor:pointer}
+.score-feedback button:hover{background:var(--cyan);color:#050505}
+.score-feedback button:focus-visible{outline:3px solid var(--green);outline-offset:3px}

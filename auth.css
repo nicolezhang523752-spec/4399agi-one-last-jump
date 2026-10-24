@@ -29,6 +29,8 @@
 .account-profile strong{color:var(--green)}
 .account-status{min-height:1.5em;margin:18px 0 0;color:var(--cyan);font-size:14px;line-height:1.45}
 .account-status.is-error{color:#ffc4c4}
+.home-rank-teaser{display:inline-block;margin-top:14px;color:var(--cyan);font-weight:700;letter-spacing:.12em;border-bottom:1px solid currentColor;padding-bottom:3px}
+.home-rank-teaser:hover{color:var(--green)}
 @media(max-width:700px){
   .account-dialog{padding:28px 22px}
   .account-dialog h2{font-size:clamp(68px,17vw,96px)}
