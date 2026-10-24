@@ -61,36 +61,45 @@ runOnStartup(async runtime => {
         const match = /^Level([1-3])$/.exec(name || "");
         return match ? Number(match[1]) : 0;
     }
+    function startRun() {
+        runId = crypto.randomUUID();
+        runActive = true;
+        runSeconds = 0;
+        furthestLevel = 1;
+        goldByLevel = [0, 0, 0];
+        lastTimeLeft = 0;
+        if (window.parent !== window) window.parent.postMessage({type: "4399agi:run-started"}, shellOrigin);
+    }
+    function completeRun(name) {
+        runActive = false;
+        const won = name === "WinScreen";
+        const totalGold = goldByLevel.reduce((total, gold) => total + gold, 0);
+        const score = furthestLevel * 1000 + totalGold * 100 + (won ? 500 + lastTimeLeft * 5 : 0);
+        if (window.parent !== window) window.parent.postMessage({
+            type: "4399agi:run-complete",
+            run_id: runId,
+            score: Math.max(0, Math.round(score)),
+            level_reached: furthestLevel,
+            completion_time: Math.max(0, Math.round(runSeconds * 1000))
+        }, shellOrigin);
+    }
     runtime.addEventListener("afteranylayoutstart", () => {
         const name = runtime.layout?.name || "";
         const level = gameplayLevel(name);
         if (level === 1) {
-            runId = crypto.randomUUID();
-            runActive = true;
-            runSeconds = 0;
-            furthestLevel = 1;
-            goldByLevel = [0, 0, 0];
-            lastTimeLeft = 0;
-            if (window.parent !== window) window.parent.postMessage({type: "4399agi:run-started"}, shellOrigin);
+            startRun();
         } else if (level && runActive) {
             furthestLevel = Math.max(furthestLevel, level);
         } else if ((name === "WinScreen" || name === "Gameover Screen") && runActive) {
-            runActive = false;
-            const won = name === "WinScreen";
-            const totalGold = goldByLevel.reduce((total, gold) => total + gold, 0);
-            const score = furthestLevel * 1000 + totalGold * 100 + (won ? 500 + lastTimeLeft * 5 : 0);
-            if (window.parent !== window) window.parent.postMessage({
-                type: "4399agi:run-complete",
-                run_id: runId,
-                score: Math.max(0, Math.round(score)),
-                level_reached: furthestLevel,
-                completion_time: Math.max(0, Math.round(runSeconds * 1000))
-            }, shellOrigin);
+            completeRun(name);
         }
     });
     runtime.addEventListener("tick", () => {
+        const name = runtime.layout?.name || "";
+        const level = gameplayLevel(name);
+        if (level === 1 && !runActive) startRun();
+        if ((name === "WinScreen" || name === "Gameover Screen") && runActive) completeRun(name);
         if (!runActive || shellPaused) return;
-        const level = gameplayLevel(runtime.layout?.name);
         if (!level) return;
         runSeconds += Math.max(0, runtime.dt);
         const gold = Number(runtime.globalVars.Goldcollected);

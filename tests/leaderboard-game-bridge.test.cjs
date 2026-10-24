@@ -70,5 +70,11 @@ async function startBridge() {
   assert.equal(earlyResults[0].level_reached, 1);
   early.command('4399agi:end-run');
   assert.equal(early.messages.filter(item => item.type === '4399agi:run-complete').length, 1);
+  const fallback = await startBridge();
+  fallback.runtime.layout.name = 'Level1'; // Runtime may enter a layout before the layout-start observer fires.
+  fallback.tick(1, 0, 119);
+  assert.equal(fallback.messages.filter(item => item.type === '4399agi:run-started').length, 1);
+  fallback.command('4399agi:end-run');
+  assert.equal(fallback.messages.filter(item => item.type === '4399agi:run-complete').length, 1);
   console.log('game result bridge: passed');
 })().catch(error => { console.error(error); process.exitCode = 1; });
