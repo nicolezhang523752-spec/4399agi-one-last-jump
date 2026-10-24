@@ -7,6 +7,7 @@ const statusLabel=document.querySelector('#game-status');
 const gameInstruction=document.querySelector('#game-instruction');
 const fullscreenButton=document.querySelector('#fullscreen-game');
 const restartButton=document.querySelector('#restart-game');
+const endRunButton=document.querySelector('#end-run');
 const pauseButton=document.querySelector('#pause-game');
 const resumeButton=document.querySelector('#resume-game');
 const pauseOverlay=document.querySelector('#pause-overlay');
@@ -37,12 +38,18 @@ gameShell.addEventListener('focusin',()=>{gameInputActive=true});
 launchHero.addEventListener('transitionend',event=>{if(event.propertyName==='height'&&gameInputActive)gameShell.scrollIntoView({behavior:prefersLessMotion.matches?'instant':'smooth',block:'center'})});
 function protectGameFrame(){try{const gameWindow=frame.contentWindow;gameWindow.addEventListener('keydown',preventGamePageScroll,true);gameWindow.document.addEventListener('pointerdown',event=>{gameInputActive=true;if(event.button===2)gameInstruction.hidden=true})}catch{/* An external game host may not allow access to its iframe. */}}
 function setStatus(label){statusLabel.textContent=label}
-function resetPause(){gameLoaded=false;pauseReady=false;gamePaused=false;pausePending=false;pauseOverlay.hidden=true;pauseButton.hidden=true;pauseButton.textContent='PAUSE ⏸';gameShell.dataset.paused='false'}
+function resetPause(){gameLoaded=false;pauseReady=false;gamePaused=false;pausePending=false;pauseOverlay.hidden=true;pauseButton.hidden=true;endRunButton.hidden=true;endRunButton.disabled=false;pauseButton.textContent='PAUSE ⏸';gameShell.dataset.paused='false'}
 function requestPause(paused){if(!frame||!gameLoaded||!pauseReady||pausePending)return;pausePending=true;frame.contentWindow.postMessage({type:'4399agi:set-pause',paused},location.origin)}
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame?.contentWindow)return;
   const data=event.data;
+  if(data?.type==='4399agi:run-started'){
+    endRunButton.hidden=false;
+    endRunButton.disabled=false;
+    return;
+  }
   if(data?.type==='4399agi:run-complete'){
+    endRunButton.hidden=true;
     if(gameLoaded)window.AGI_SCORE_SUBMIT?.(data);
     return;
   }
@@ -59,6 +66,7 @@ window.addEventListener('message',event=>{
   if(gamePaused)resumeButton.focus();else frame.focus();
 });
 pauseButton.addEventListener('click',()=>requestPause(!gamePaused));
+endRunButton.addEventListener('click',()=>{if(!frame||!gameLoaded||endRunButton.disabled)return;endRunButton.disabled=true;setStatus('ENDING RUN');frame.contentWindow.postMessage({type:'4399agi:end-run'},location.origin)});
 resumeButton.addEventListener('click',()=>requestPause(false));
 function showError(title,copy){clearTimeout(loadTimeout);resetPause();gameInputActive=false;gameInstruction.hidden=true;loading.hidden=true;placeholder.hidden=true;message.hidden=false;document.querySelector('#message-title').innerHTML=title;document.querySelector('#message-copy').innerHTML=copy;setStatus('GAME UNAVAILABLE');fullscreenButton.hidden=true;restartButton.hidden=true;frame?.remove();frame=null}
 function setLoading(){resetPause();document.querySelector('#score-feedback').hidden=true;gameInstruction.hidden=true;message.hidden=true;placeholder.hidden=true;loading.hidden=false;setStatus('LOADING GAME')}

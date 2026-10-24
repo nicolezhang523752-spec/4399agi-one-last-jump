@@ -19,6 +19,8 @@ Run [`leaderboard.sql`](leaderboard.sql) in the same project's SQL Editor **afte
 
 The Construct game script `game/scripts/project/main.js` emits `4399agi:run-complete` when its real `WinScreen` or `Gameover Screen` starts. `play.js` accepts messages only from its same-origin game iframe; `js/score-submission.js` attaches the authenticated user ID and inserts the result. A failed insert is shown as **FAILED TO SAVE SCORE**, with a retry button. Logged-out runs are not saved until the player signs in and retries on the still-open page.
 
+After entering Level1, the player can also click **END RUN** below the game. This enters the existing Gameover Screen and records the gameplay reached so far; it helps players submit a score without waiting for a loss or win.
+
 The game export has no native score variable. The current score is calculated from real gameplay state: `level_reached × 1000 + total gold collected × 100 + (on win: 500 + remaining seconds × 5)`. Elapsed gameplay time is stored as `completion_time` in milliseconds; pausing does not add time. `attempts` stays null because the export does not expose a reliable attempt count. Each run has a `run_id` UUID to prevent duplicate inserts.
 
 Ranking uses one best run per player. Sort by score descending, level descending, completion time ascending (unknown times last), creation time ascending, then row ID for a stable final tie. The leaderboard is visible to guests. A signed-in user sees their best score, latest run, approximate rank, and their five most recent runs.

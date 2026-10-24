@@ -12,3 +12,8 @@
 .score-feedback button{border:1px solid var(--cyan);background:transparent;color:var(--cyan);padding:10px 13px;min-height:44px;font:700 12px var(--font-body);cursor:pointer}
 .score-feedback button:hover{background:var(--cyan);color:#050505}
 .score-feedback button:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.utility-actions #end-run{color:var(--cyan)}
+.utility-actions #end-run:hover{color:var(--green)}
+.utility-actions #end-run:disabled{opacity:.55;cursor:wait}
+@media(max-width:1200px){.game-utilities{align-items:flex-start;flex-direction:column}.utility-actions{flex-wrap:wrap;gap:8px 22px}}
+@media(max-width:600px){.utility-actions{justify-content:flex-start;gap:4px 15px}}

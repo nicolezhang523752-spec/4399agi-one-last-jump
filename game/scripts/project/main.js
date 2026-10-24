@@ -17,6 +17,16 @@ runOnStartup(async runtime => {
             reportPauseState();
             return;
         }
+        if (event.data?.type === "4399agi:end-run") {
+            if (!runActive) return;
+            if (shellPaused) {
+                runtime.timeScale = resumeTimeScale;
+                shellPaused = false;
+                reportPauseState();
+            }
+            runtime.goToLayout("Gameover Screen");
+            return;
+        }
         if (event.data?.type !== "4399agi:set-pause") return;
         const nextPaused = event.data.paused === true;
         if (nextPaused !== shellPaused) {
@@ -61,6 +71,7 @@ runOnStartup(async runtime => {
             furthestLevel = 1;
             goldByLevel = [0, 0, 0];
             lastTimeLeft = 0;
+            if (window.parent !== window) window.parent.postMessage({type: "4399agi:run-started"}, shellOrigin);
         } else if (level && runActive) {
             furthestLevel = Math.max(furthestLevel, level);
         } else if ((name === "WinScreen" || name === "Gameover Screen") && runActive) {
