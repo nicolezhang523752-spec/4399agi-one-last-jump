@@ -21,6 +21,8 @@ The Construct game script `game/scripts/project/main.js` emits `4399agi:run-comp
 
 After entering Level1, the player can also click **END RUN** below the game. This enters the existing Gameover Screen and records the gameplay reached so far; it helps players submit a score without waiting for a loss or win.
 
+The Construct export caches game scripts with `game/offline.json`. Increment its `version` whenever a cached game file changes, then reload the game page after deployment so existing players receive the new files.
+
 The game export has no native score variable. The current score is calculated from real gameplay state: `level_reached × 1000 + total gold collected × 100 + (on win: 500 + remaining seconds × 5)`. Elapsed gameplay time is stored as `completion_time` in milliseconds; pausing does not add time. `attempts` stays null because the export does not expose a reliable attempt count. Each run has a `run_id` UUID to prevent duplicate inserts.
 
 Ranking uses one best run per player. Sort by score descending, level descending, completion time ascending (unknown times last), creation time ascending, then row ID for a stable final tie. The leaderboard is visible to guests. A signed-in user sees their best score, latest run, approximate rank, and their five most recent runs.
