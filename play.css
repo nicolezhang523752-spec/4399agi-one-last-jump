@@ -12,6 +12,8 @@
 .score-feedback button{border:1px solid var(--cyan);background:transparent;color:var(--cyan);padding:10px 13px;min-height:44px;font:700 12px var(--font-body);cursor:pointer}
 .score-feedback button:hover{background:var(--cyan);color:#050505}
 .score-feedback button:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.game-shell .score-feedback{position:absolute;z-index:5;left:14px;bottom:14px;max-width:min(560px,calc(100% - 28px));margin:0;padding:14px 16px;border:1px solid var(--cyan);background:rgba(4,9,14,.96);box-shadow:0 12px 35px rgba(0,0,0,.55)}
+@media(max-width:600px){.game-shell .score-feedback{left:8px;bottom:8px;max-width:calc(100% - 16px);gap:7px;padding:8px}.game-shell .score-feedback strong{font-size:22px}.game-shell .score-feedback span{font-size:10px}.game-shell .score-feedback button{min-height:32px;padding:6px 9px;font-size:10px}}
 .utility-actions #end-run{color:var(--cyan)}
 .utility-actions #end-run:hover{color:var(--green)}
 .utility-actions #end-run:disabled{opacity:.55;cursor:wait}

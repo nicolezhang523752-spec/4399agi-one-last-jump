@@ -2,6 +2,7 @@
   const client = window.AGI_AUTH_CLIENT;
   const box = document.querySelector('#score-feedback');
   if (!box) return;
+  document.querySelector('#game-shell')?.append(box);
   const title = box.querySelector('#score-feedback-title');
   const copy = box.querySelector('#score-feedback-copy');
   const retry = box.querySelector('#retry-score');
